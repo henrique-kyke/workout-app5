@@ -8,7 +8,7 @@ RSpec.feature "Creating Exercises" do
 
   scenario "with valid inputs" do
     visit "/"
-    click_link "My Louge"
+    click_link "My Lounge"
     click_link "New Workout"
     expect(page).to have_link("Back")
 
