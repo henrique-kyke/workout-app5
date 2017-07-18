@@ -33,7 +33,7 @@ RSpec.feature "Creating Exercises" do
     click_button "Create Exercise"
 
     expect(page).to have_content("Exercise has not been created")
-    expect(page).to have_content I18n.t("errors.messages.not_a_number")
     expect(page).to have_content I18n.t("errors.messages.blank")
+    expect(page).to have_content I18n.t("errors.messages.not_a_number")
   end
 end
