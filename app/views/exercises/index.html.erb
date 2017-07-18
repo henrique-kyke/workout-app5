@@ -1,3 +1,7 @@
 <div class="col-md-8 col-xs-12">
+  <% unless @exercises.empty? %>
+    <h1>Listing Exercises</h1>
+  <% else %>
+  <% end %>
   <%= link_to "New Workout", new_user_exercise_path(current_user), class: "btn btn-success link" %>
 </div>
