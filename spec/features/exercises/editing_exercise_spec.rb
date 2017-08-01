@@ -23,8 +23,8 @@ RSpec.feature "Editing Exercises" do
     fill_in "Duration", with: 45
     click_button "Update Exercise"
 
-    expect(page).to have("Exercise has been updated")
-    expect(page).to have(45)
-    expect(page).not_to have(48)
+    expect(page).to have_content("Exercise has been updated")
+    expect(page).to have_content(45)
+    expect(page).not_to have_content(48)
   end
 end
