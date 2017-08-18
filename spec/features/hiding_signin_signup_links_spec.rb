@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Hiding Sign in link" do
   before do
-    @john =  User.create!(email: "john@example.com", password: "password")
+    @john = User.create(first_name: "John", last_name: "Doe", email: "john@example.com", password: "password")
   end
 
   scenario "upon successful signin" do
@@ -15,6 +15,6 @@ RSpec.feature "Hiding Sign in link" do
     expect(page).to have_link("Sign out")
     expect(page).not_to have_link("Sign in")
     expect(page).not_to have_link("Sign up")
-    
+
   end
 end
