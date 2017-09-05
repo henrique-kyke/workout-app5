@@ -9,6 +9,8 @@ class User < ApplicationRecord
   self.per_page = 10
 
   has_many :exercises
+  has_many :friendships
+  has_many :friends, through: :friendships, class_name: "User"
 
   def full_name
     [first_name, last_name].join(" ")
@@ -24,5 +26,9 @@ class User < ApplicationRecord
       where("first_name LIKE ? or first_name LIKE ? or last_name LIKE ? or last_name LIKE ?",
         "%#{names_array[0]}%", "%#{names_array[1]}%", "%#{names_array[0]}%", "%#{names_array[1]}%").order(:first_name)
     end
+  end
+
+  def follows_or_same?(user)
+    friendships.map(&:friend).include?(user) || self == user
   end
 end
