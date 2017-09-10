@@ -8,6 +8,11 @@ class FriendshipsController < ApplicationController
     Friendship.create(friendship_params) unless current_user.follows_or_same?(friend)
   end
 
+  def show
+    @friend = Friendship.find(params[:id]).friend
+    @exercises = @friend.exercises
+  end
+
   private
 
   def friendship_params
