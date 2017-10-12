@@ -20,6 +20,11 @@ RSpec.feature "Sending a message" do
     visit "/"
     click_link "My Lounge"
 
+    within("#followers") do
+      expect(page).to have_link(@sarah.full_name)
+      expect(page).to have_link(@henry.full_name)
+    end
+
     expect(page).to have_content(@room_name)
 
     fill_in "message-field", with: "Hello"
@@ -27,9 +32,5 @@ RSpec.feature "Sending a message" do
 
     expect(page).to have_content("Hello")
 
-    within("#followers") do
-      expect(page).to have_link(@sarah.full_name)
-      expect(page).to have_link(@henry.full_name)
-    end
   end
 end
